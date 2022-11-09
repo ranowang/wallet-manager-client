@@ -23,6 +23,8 @@ import { BatchWithdrawResult } from './entities/BatchWithdrawResult';
 import { BatchSweepRequest } from './entities/BatchSweepRequest';
 import { BatchSweepResult } from './entities/BatchSweepResult';
 
+import { GetAllLatestBlocksResult } from './entities/GetAllLatestBlocksResult';
+
 import { AxiosInstance } from 'axios';
 
 export class WalletManagerClient{
@@ -101,6 +103,11 @@ export class WalletManagerClient{
                     offset: offset,
                 }
             });
+        return response.data;
+    }
+
+    async GetAllLatestBlocks():Promise<Response<GetAllLatestBlocksResult>>{
+        const response = await this.instance.get("/chains/get_all_latest_blocks");
         return response.data;
     }
 }

@@ -13,6 +13,7 @@ import { GetDepositByAddressRequest } from '../src/entities/GetDepositByAddressR
 import { GetDepositByHashRequest } from '../src/entities/GetDepositByHashRequest';
 import { GetWithdrawByOrderIdRequest } from '../src/entities/GetWithdrawByOrderIdRequest';
 import { GetWithdrawByBatchIdRequest } from '../src/entities/GetWithdrawByBatchIdRequest';
+import { GetAllLatestBlocksRequest } from '../src/entities/GetAllLatestBlocksRequest';
 
 import { expect } from 'chai';
 
@@ -314,6 +315,15 @@ describe("Test Access API ETH", async function () {
         const response = await client.getWithdrawByBatchId(request);
 
         console.info(JSON.stringify(response, null, 2));
+    });
+
+    it("GetAllLatestBlocks", async function(){
+
+        const response = await client.GetAllLatestBlocks();
+        console.info(JSON.stringify(response));
+
+        expect(response.result).to.be.not.undefined;
+        expect(response.result).to.be.not.null;
     });
     
 });

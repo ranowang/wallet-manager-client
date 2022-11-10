@@ -8,6 +8,9 @@ import { GetDepositByAddressResult } from './entities/GetDepositByAddressResult'
 import { GetDepositByHashRequest } from './entities/GetDepositByHashRequest';
 import { GetDepositByHashResult } from './entities/GetDepositByHashResult';
 
+import { GetDepositByRefNoRequest } from './entities/GetDepositByRefNoRequest';
+import { GetDepositByRefNoResult } from './entities/GetDepositByRefNoResult';
+
 import { GetWithdrawByOrderIdRequest } from './entities/GetWithdrawByOrderIdRequest';
 import { Operation } from './entities/Operation';
 
@@ -108,6 +111,20 @@ export class WalletManagerClient{
 
     async GetAllLatestBlocks():Promise<Response<GetAllLatestBlocksResult>>{
         const response = await this.instance.get("/chains/get_all_latest_blocks");
+        return response.data;
+    }
+
+    async getDepositByRefNo(request:GetDepositByRefNoRequest):Promise<Response<GetDepositByRefNoResult>>{
+        const {chain_type, chain_id, ref_no, limit, offset} = request;
+        const path = `/${chain_type}/${chain_id}/transfer/ref_no/${ref_no}/deposit`;
+        const response = await this.instance.get(
+                path, {
+                    params: {
+                        limit: limit,
+                        offset: offset,
+                    }
+                }
+            );
         return response.data;
     }
 }

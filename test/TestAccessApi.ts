@@ -13,7 +13,6 @@ import { GetDepositByAddressRequest } from '../src/entities/GetDepositByAddressR
 import { GetDepositByHashRequest } from '../src/entities/GetDepositByHashRequest';
 import { GetWithdrawByOrderIdRequest } from '../src/entities/GetWithdrawByOrderIdRequest';
 import { GetWithdrawByBatchIdRequest } from '../src/entities/GetWithdrawByBatchIdRequest';
-import { GetAllLatestBlocksRequest } from '../src/entities/GetAllLatestBlocksRequest';
 
 import { expect } from 'chai';
 
@@ -206,16 +205,16 @@ describe("Test Access API ETH", async function () {
     it("Preview batch sweep", async function () {        
 
         const request:BatchSweepRequest = {
-            merchant_id: new BigNumber(3),
+            merchant_id: new BigNumber(1),
             merchant_order_id: 'S' + orderSeq++,
-            chain_type,
-            chain_id,
-            asset_name: "UNI",
-            threshold: new BigNumber("1400000000"),
-            decimals: 18,
-            gether_address: "0xcc1cf534F0F29C2CA6BB920C4D6473A7cbb06aDF",
-            invoker_address: "0xfee2FFF9c65336EdBd61F6882f7dC9FAc2e782e5",
-            client_data: "abc",
+            chain_type: 1,
+            chain_id: new BigNumber(1),
+            asset_name: "BTC",
+            threshold: new BigNumber("5000"),
+            decimals: 8,
+            gether_address: "mycB37zMD7sr2Mcfh35Suv26wgfU7UrXLT",
+            invoker_address: "",
+            client_data: "rano",
             preview: true
         };
 

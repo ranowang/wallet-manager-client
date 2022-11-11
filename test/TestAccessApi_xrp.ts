@@ -22,14 +22,14 @@ const { privateKey } = CONFIG.identity;
 
 let orderSeq = new Date().getTime();
 
-const chain_type = ChainType.BTC;
-const chain_id = ChainId.Default;
-const merchant_id = new BigNumber(CONFIG.merchantId);
+const chain_type = ChainType.XRP;
+const chain_id = ChainId.RippleTestnet;
 const wallet_type = WalletType.ClientWallet;
+const merchant_id = new BigNumber(CONFIG.merchantId);
 
 const client = new WalletManagerClient(privateKey, clientConfig);
 
-describe("Test Access API BTC", async function () {
+describe("Test Access API XRP", async function () {
   it("Get Address", async function () {
     const request: GetAddressReqeust = {
       chain_type,
@@ -37,7 +37,7 @@ describe("Test Access API BTC", async function () {
       merchant_id,
       client_id: new Date().getTime().toFixed(),
       wallet_type,
-      wallet_name:"",
+      wallet_name:"1668159293078",
     };
 
     const response = await client.getAddress(request);
@@ -67,8 +67,8 @@ describe("Test Access API BTC", async function () {
     const request: BatchWithdrawRequest = {
       chain_type,
       chain_id,
-      merchant_id,
       wallet_type,
+      merchant_id,
       asset_name: "BTC",
       orders: [order1, order2],
       client_data: "test",

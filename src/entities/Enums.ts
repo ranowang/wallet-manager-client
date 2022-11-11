@@ -3,12 +3,14 @@ import BigNumber from "bignumber.js";
 export enum ChainType{
     BTC = 1,
     ETH = 2,
-    TRON = 3
+    TRON = 3,
+    XRP = 4
 }
 
 export class ChainId{
     static readonly Default = new BigNumber('1');
     static readonly Ethereum = new BigNumber('1');
+    static readonly RippleTestnet = new BigNumber('2');
     static readonly Rinkeby = new BigNumber('4');
     static readonly BSC = new BigNumber('56');
     static readonly BSCtest = new BigNumber('97');
@@ -93,4 +95,10 @@ export enum TransactionType{
     CAUTION43 = 43,
     MerchantTransfer = 44,
     MerchantWithdrawFee = 49
+    
+}
+export enum WalletType{
+    ClientWallet = 1,
+    HotWallet = 2,
+    InvokerWallet = 3
 }

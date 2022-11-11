@@ -1,5 +1,6 @@
 import BigNumber from "bignumber.js";
 import { ChainType } from "./Enums";
+import { WalletType } from "./Enums";
 
 export interface WithdrawOrder{
     
@@ -12,6 +13,7 @@ export interface WithdrawOrder{
 export interface BatchWithdrawRequest{
 
     merchant_id:BigNumber;
+    wallet_type: WalletType;
     chain_type: ChainType;
     chain_id: BigNumber;
     asset_name: string;

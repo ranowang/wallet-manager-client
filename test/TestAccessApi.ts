@@ -1,7 +1,7 @@
 import { loadConfig } from 'wallet-manager-client-utils';
 import { MerchantConfig } from '../src/entities/MerchantConfig'
 const CONFIG = loadConfig<MerchantConfig>('config');
-import { ChainType, ChainId} from '../src/entities/Enums';
+import { ChainType, ChainId,WalletType} from '../src/entities/Enums';
 import BigNumber from "bignumber.js";
 
 import {WalletManagerClient} from '../src/WalletManagerClient';
@@ -22,6 +22,7 @@ const { privateKey } = CONFIG.identity;
 let orderSeq = new Date().getTime();
 
 const chain_type = ChainType.TRON;
+const wallet_type = WalletType.ClientWallet;
 const chain_id = ChainId.Default;
 const merchant_id = new BigNumber(CONFIG.merchantId);
 
@@ -35,7 +36,9 @@ describe("Test Access API ", async function () {
             chain_type, 
             chain_id, 
             merchant_id,
-            client_id: new Date().getTime().toFixed()
+            client_id: new Date().getTime().toFixed(),
+            wallet_type,
+            wallet_name:"",
         };
 
         const response = await client.getAddress(request);
@@ -68,6 +71,7 @@ describe("Test Access API ", async function () {
             chain_type, 
             chain_id, 
             merchant_id,
+            wallet_type,
             asset_name: "UNI",
             orders: [order1, order2],
             client_data: "abc"
@@ -95,6 +99,7 @@ describe("Test Access API ", async function () {
         const request:BatchWithdrawRequest = {
             merchant_id:new BigNumber(3),
             chain_type: ChainType.ETH,
+            wallet_type,
             chain_id: ChainId.Rinkeby,
             asset_name: "USDC",
             orders: [order],
@@ -122,6 +127,7 @@ describe("Test Access API ", async function () {
 
         const request:BatchWithdrawRequest = {
             merchant_id,
+            wallet_type,
             chain_type: ChainType.ETH,
             chain_id: ChainId.BSCtest,
             asset_name: "USDT",
@@ -153,6 +159,7 @@ describe("Test Access API ", async function () {
 
         const request:BatchWithdrawRequest = {
             merchant_id,
+            wallet_type,
             chain_type: ChainType.TRON,
             chain_id: ChainId.Default,
             asset_name: "TRX",
@@ -183,6 +190,7 @@ describe("Test Access API ", async function () {
 
         const request:BatchWithdrawRequest = {
             merchant_id,
+            wallet_type,
             chain_type: ChainType.BTC,
             chain_id: ChainId.Default,
             asset_name: "BTC",

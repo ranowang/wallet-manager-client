@@ -14,6 +14,7 @@ import { GetDepositByHashRequest } from '../src/entities/GetDepositByHashRequest
 import { GetDepositByRefNoRequest } from '../src/entities/GetDepositByRefNoRequest';
 import { GetWithdrawByOrderIdRequest } from '../src/entities/GetWithdrawByOrderIdRequest';
 import { GetWithdrawByBatchIdRequest } from '../src/entities/GetWithdrawByBatchIdRequest';
+import { VerifyTransactionRequest } from '../src/entities/VerifyTransactionRequest';
 
 import { expect } from 'chai';
 
@@ -171,7 +172,7 @@ describe("Test Access API BTC", async function () {
 
     it("getWithdrawByOrderId", async function(){
         const request:GetWithdrawByOrderIdRequest = {
-            merchant_order_id: "W1662104213630",
+            merchant_order_id: "W1668051419819",
             offset: 0,
             limit: 10
         };
@@ -182,7 +183,7 @@ describe("Test Access API BTC", async function () {
 
     it("getWithdrawByBatchId", async function(){
         const request:GetWithdrawByBatchIdRequest = {
-            batch_id: "168",
+            batch_id: "221",
             offset: 0,
             limit: 10
         };
@@ -198,6 +199,24 @@ describe("Test Access API BTC", async function () {
 
         expect(response.result).to.be.not.undefined;
         expect(response.result).to.be.not.null;
+    });
+
+    it("VerifyTransaction", async function () {
+
+        const request:VerifyTransactionRequest = {
+            merchant_id,
+            batch_id: "225",
+            chain_type, 
+            chain_id,
+            operation_type: "1",
+            status: "1",
+
+        };
+
+        const response = await client.verifyTransaction(request);
+        console.info(JSON.stringify(response));
+
+
     });
     
 });

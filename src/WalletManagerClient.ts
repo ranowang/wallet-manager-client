@@ -28,6 +28,9 @@ import { BatchSweepResult } from './entities/BatchSweepResult';
 
 import { GetAllLatestBlocksResult } from './entities/GetAllLatestBlocksResult';
 
+import { VerifyTransactionRequest } from "./entities/VerifyTransactionRequest";
+import { VerifyTransactionResult } from './entities/VerifyTransactionResult';
+
 import { AxiosInstance } from 'axios';
 
 export class WalletManagerClient{
@@ -125,6 +128,11 @@ export class WalletManagerClient{
                     }
                 }
             );
+        return response.data;
+    }
+
+    async verifyTransaction(request:VerifyTransactionRequest):Promise<Response<VerifyTransactionResult>>{
+        const response = await this.instance.post("verify_transaction", request);
         return response.data;
     }
 }

@@ -27,7 +27,7 @@ const merchant_id = new BigNumber(CONFIG.merchantId);
 
 const client = new WalletManagerClient(privateKey, clientConfig);
 
-describe("Test Access API ETH", async function () {
+describe("Test Access API ", async function () {
 
     it("Get Address", async function () {
 

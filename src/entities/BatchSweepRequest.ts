@@ -5,7 +5,7 @@ export interface BatchSweepRequest {
     merchant_id: BigNumber;
     merchant_order_id?: string;
     chain_type: ChainType
-    chain_id: BigNumber
+    chain_id: number
     asset_name: string
     threshold: BigNumber
     decimals: number

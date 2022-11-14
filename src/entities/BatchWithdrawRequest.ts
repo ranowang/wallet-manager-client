@@ -16,7 +16,7 @@ export interface BatchWithdrawRequest{
     merchant_id:BigNumber;
     wallet_type?: WalletType;
     chain_type: ChainType;
-    chain_id: BigNumber;
+    chain_id: number;
     asset_name: string;
     hot_wallet_address?: string;
     orders:WithdrawOrder[];

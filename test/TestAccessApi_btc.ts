@@ -14,6 +14,7 @@ import { GetDepositByRefNoRequest } from "../src/entities/GetDepositByRefNoReque
 import { GetWithdrawByOrderIdRequest } from "../src/entities/GetWithdrawByOrderIdRequest";
 import { GetWithdrawByBatchIdRequest } from "../src/entities/GetWithdrawByBatchIdRequest";
 import { VerifyTransactionRequest } from "../src/entities/VerifyTransactionRequest";
+import { GetAllLatestBlocksRequest } from "../src/entities/GetAllLatestBlocksRequest";
 
 import { expect } from "chai";
 
@@ -159,6 +160,7 @@ describe("Test Access API BTC", async function () {
       offset: 0,
       limit: 10,
     };
+
     const response = await client.getDepositByRefNo(request);
 
     console.info(JSON.stringify(response));
@@ -166,7 +168,7 @@ describe("Test Access API BTC", async function () {
 
   it("getWithdrawByOrderId", async function () {
     const request: GetWithdrawByOrderIdRequest = {
-      merchant_order_id: "W1668051419818",
+      merchant_order_id: "EU11_WD_202211041739",
       offset: 0,
       limit: 10,
     };
@@ -177,7 +179,7 @@ describe("Test Access API BTC", async function () {
 
   it("getWithdrawByBatchId", async function () {
     const request: GetWithdrawByBatchIdRequest = {
-      batch_id: "221",
+      batch_id: "196",
       offset: 0,
       limit: 10,
     };
@@ -187,7 +189,13 @@ describe("Test Access API BTC", async function () {
   });
 
   it("GetAllLatestBlocks", async function () {
-    const response = await client.GetAllLatestBlocks();
+    const request: GetAllLatestBlocksRequest = {
+      chain_type,
+      chain_id
+    };
+
+    const response = await client.getAllLatestBlocks(request);
+    console.info(JSON.stringify(request));
     console.info(JSON.stringify(response));
 
     expect(response.result).to.be.not.undefined;

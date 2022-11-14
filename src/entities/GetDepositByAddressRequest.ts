@@ -1,10 +1,9 @@
-import BigNumber from "bignumber.js";
 import { ChainType } from "./Enums";
 
 export interface GetDepositByAddressRequest {
     
     chain_type: ChainType;
-    chain_id: BigNumber;
+    chain_id: number;
     address: string;
     asset_name?: string;
     offset?: number;

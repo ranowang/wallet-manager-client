@@ -6,7 +6,7 @@ export interface VerifyTransactionRequest {
     merchant_id: BigNumber;
     batch_id:string;
     chain_type: ChainType;
-    chain_id: BigNumber;
+    chain_id: number;
     operation_type: string;
     status: string;
     

@@ -13,6 +13,7 @@ import { GetDepositByAddressRequest } from '../src/entities/GetDepositByAddressR
 import { GetDepositByHashRequest } from '../src/entities/GetDepositByHashRequest';
 import { GetWithdrawByOrderIdRequest } from '../src/entities/GetWithdrawByOrderIdRequest';
 import { GetWithdrawByBatchIdRequest } from '../src/entities/GetWithdrawByBatchIdRequest';
+import { GetAllLatestBlocksRequest } from "../src/entities/GetAllLatestBlocksRequest";
 
 import { expect } from 'chai';
 
@@ -216,7 +217,7 @@ describe("Test Access API ", async function () {
             merchant_id: new BigNumber(1),
             merchant_order_id: 'S' + orderSeq++,
             chain_type: 1,
-            chain_id: new BigNumber(1),
+            chain_id: 1,
             asset_name: "BTC",
             threshold: new BigNumber("5000"),
             decimals: 8,
@@ -324,13 +325,16 @@ describe("Test Access API ", async function () {
         console.info(JSON.stringify(response, null, 2));
     });
 
-    it("GetAllLatestBlocks", async function(){
-
-        const response = await client.GetAllLatestBlocks();
+    it("GetAllLatestBlocks", async function () {
+        const request: GetAllLatestBlocksRequest = {
+          chain_type,
+          chain_id 
+        };
+    
+        const response = await client.getAllLatestBlocks(request);
         console.info(JSON.stringify(response));
-
+    
         expect(response.result).to.be.not.undefined;
         expect(response.result).to.be.not.null;
-    });
-    
+      });
 });

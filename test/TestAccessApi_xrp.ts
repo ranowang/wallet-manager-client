@@ -14,6 +14,7 @@ import { GetDepositByRefNoRequest } from "../src/entities/GetDepositByRefNoReque
 import { GetWithdrawByOrderIdRequest } from "../src/entities/GetWithdrawByOrderIdRequest";
 import { GetWithdrawByBatchIdRequest } from "../src/entities/GetWithdrawByBatchIdRequest";
 import { VerifyTransactionRequest } from "../src/entities/VerifyTransactionRequest";
+import { GetAllLatestBlocksRequest } from "../src/entities/GetAllLatestBlocksRequest";
 
 import { expect } from "chai";
 
@@ -188,7 +189,12 @@ describe("Test Access API XRP", async function () {
   });
 
   it("GetAllLatestBlocks", async function () {
-    const response = await client.GetAllLatestBlocks();
+    const request: GetAllLatestBlocksRequest = {
+      chain_type,
+      chain_id
+    };
+
+    const response = await client.getAllLatestBlocks(request);
     console.info(JSON.stringify(response));
 
     expect(response.result).to.be.not.undefined;

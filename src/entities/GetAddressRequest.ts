@@ -9,5 +9,5 @@ export interface GetAddressReqeust {
     wallet_name: string;
     wallet_type: WalletType;
     chain_type: ChainType;
-    chain_id: BigNumber;
+    chain_id: number;
 }

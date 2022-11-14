@@ -26,6 +26,7 @@ import { BatchWithdrawResult } from './entities/BatchWithdrawResult';
 import { BatchSweepRequest } from './entities/BatchSweepRequest';
 import { BatchSweepResult } from './entities/BatchSweepResult';
 
+import { GetAllLatestBlocksRequest } from './entities/GetAllLatestBlocksRequest';
 import { GetAllLatestBlocksResult } from './entities/GetAllLatestBlocksResult';
 
 import { VerifyTransactionRequest } from "./entities/VerifyTransactionRequest";
@@ -112,8 +113,16 @@ export class WalletManagerClient{
         return response.data;
     }
 
-    async GetAllLatestBlocks():Promise<Response<GetAllLatestBlocksResult>>{
-        const response = await this.instance.get("/chains/get_all_latest_blocks");
+    async getAllLatestBlocks(request:GetAllLatestBlocksRequest):Promise<Response<GetAllLatestBlocksResult>>{
+        const {chain_type, chain_id} = request;
+        const path = `/chains/get_all_latest_blocks/`;
+        const response = await this.instance.get(
+        path, {
+            params: {
+                chain_type: chain_type,
+                chain_id: chain_id,
+            }
+             });
         return response.data;
     }
 

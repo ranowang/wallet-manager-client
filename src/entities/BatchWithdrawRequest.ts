@@ -8,15 +8,17 @@ export interface WithdrawOrder{
     amount: BigNumber;
     decimals: number;
     to_address: string;
+    to_wallet_tag?: string;
 }
 
 export interface BatchWithdrawRequest{
 
     merchant_id:BigNumber;
-    wallet_type: WalletType;
+    wallet_type?: WalletType;
     chain_type: ChainType;
     chain_id: BigNumber;
     asset_name: string;
+    hot_wallet_address?: string;
     orders:WithdrawOrder[];
     client_data?: string;
 

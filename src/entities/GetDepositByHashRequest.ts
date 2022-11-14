@@ -6,6 +6,9 @@ export interface GetDepositByHashRequest {
     chain_type: ChainType;
     chain_id: BigNumber;
     tx_hash: string;
-    limit: number;
-    offset: number;
+    offset?: number;
+    limit?: number;
+    block_hash?: string;
+    tx_status?: boolean;
+    valid?: boolean;
 }

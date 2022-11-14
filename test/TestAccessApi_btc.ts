@@ -37,7 +37,7 @@ describe("Test Access API BTC", async function () {
       merchant_id,
       client_id: new Date().getTime().toFixed(),
       wallet_type,
-      wallet_name:"",
+      wallet_name:""
     };
 
     const response = await client.getAddress(request);
@@ -68,7 +68,6 @@ describe("Test Access API BTC", async function () {
       chain_type,
       chain_id,
       merchant_id,
-      wallet_type,
       asset_name: "BTC",
       orders: [order1, order2],
       client_data: "test",
@@ -167,7 +166,7 @@ describe("Test Access API BTC", async function () {
 
   it("getWithdrawByOrderId", async function () {
     const request: GetWithdrawByOrderIdRequest = {
-      merchant_order_id: "W1668051419819",
+      merchant_order_id: "W1668051419818",
       offset: 0,
       limit: 10,
     };

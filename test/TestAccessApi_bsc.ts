@@ -23,8 +23,8 @@ const { privateKey } = CONFIG.identity;
 
 let orderSeq = new Date().getTime();
 
-const chain_type = ChainType.XRP;
-const chain_id = ChainId.RippleTestnet;
+const chain_type = ChainType.ETH;
+const chain_id = ChainId.BSCtest;
 const wallet_type = WalletType.HotWallet;
 const merchant_id = new BigNumber(CONFIG.merchantId);
 

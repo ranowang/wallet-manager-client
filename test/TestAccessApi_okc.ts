@@ -23,14 +23,14 @@ const { privateKey } = CONFIG.identity;
 
 let orderSeq = new Date().getTime();
 
-const chain_type = ChainType.ETH;
-const chain_id = ChainId.BSCtest;
+const chain_type = ChainType.XRP;
+const chain_id = ChainId.RippleTestnet;
 const wallet_type = WalletType.HotWallet;
 const merchant_id = new BigNumber(CONFIG.merchantId);
 
 const client = new WalletManagerClient(privateKey, clientConfig);
 
-describe("Test Access API BSC", async function () {
+describe("Test Access API XRP", async function () {
   it("Get Address", async function () {
     const request: GetAddressReqeust = {
       chain_type,
@@ -53,9 +53,9 @@ describe("Test Access API BSC", async function () {
   it("Batch withdraw", async function () {
     const order:WithdrawOrder = {
       merchant_order_id: "W" + orderSeq++,
-      amount: new BigNumber("10000000000000000000"),
-      decimals: 18,
-      to_address: "0x5f1d06d369092da06D897971Fce3BF150F8735B3"
+      amount: new BigNumber("5000000"),
+      decimals: 6,
+      to_address: "rhEpyng9BtC4UGk96YaTvR3sPTtDmoH2jo"
   };
 
   const request:BatchWithdrawRequest = {
@@ -63,7 +63,7 @@ describe("Test Access API BSC", async function () {
       wallet_type,
       chain_type,
       chain_id,
-      asset_name: "USDT",
+      asset_name: "XRP",
       orders: [order],
       client_data: "rano_test004"
   };
@@ -87,10 +87,10 @@ describe("Test Access API BSC", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "USDC",
-      threshold: new BigNumber("10000000000000000"),
-      decimals: 18,
-      gether_address: "0x70A2247873a7Ead1103c0c0eBcEFB50f4F4E255a", // hot wallet address
+      asset_name: "XRP",
+      threshold: new BigNumber("31000000"),
+      decimals: 6,
+      gether_address: "rBrVY3ib8bXupPN6Ara9msa5T1xwbUic5B", // hot wallet address
       invoker_address: "",
       client_data: "ranotest",
       preview: true,
@@ -107,10 +107,10 @@ describe("Test Access API BSC", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "USDC",
-      threshold: new BigNumber("10000000000000000"),
-      decimals: 18,
-      gether_address: "0x70A2247873a7Ead1103c0c0eBcEFB50f4F4E255a", // hot wallet address
+      asset_name: "XRP",
+      threshold: new BigNumber("31000000"),
+      decimals: 6,
+      gether_address: "rBrVY3ib8bXupPN6Ara9msa5T1xwbUic5B", // hot wallet address
       invoker_address: "",
       client_data: "ranotest",
       preview: false,
@@ -125,8 +125,8 @@ describe("Test Access API BSC", async function () {
     const request: GetDepositByAddressRequest = {
       chain_type,
       chain_id,
-      address: "0x70A2247873a7Ead1103c0c0eBcEFB50f4F4E255a",
-      asset_name: "USDT",
+      address: "rBrVY3ib8bXupPN6Ara9msa5T1xwbUic5B",
+      asset_name: "XRP",
       offset: 0,
       limit: 10,
     };
@@ -141,7 +141,7 @@ describe("Test Access API BSC", async function () {
       chain_type,
       chain_id,
       tx_hash:
-        "0x67774e108d06606becf0655284e5d8993585f1526d5c3239decfa37f0bb9014f",
+        "A5DBD6978F430652BC08A3E03BFB43832A72905EECC97F17A96A153A43909641",
       offset: 0,
       limit: 10,
     };
@@ -155,7 +155,7 @@ describe("Test Access API BSC", async function () {
     const request: GetDepositByRefNoRequest = {
       chain_type,
       chain_id,
-      ref_no: "4OHJ3PBMLIBPDVDTXZSK25J53QYQG6MN7G5UCKUNZCO5NAK6OD6Q",
+      ref_no: "GN66ZEE7EAN3DMCX6N6SR6LXAZAKYYC3BVIC424PFVBUNEYU2CNA",
       offset: 0,
       limit: 10,
     };
@@ -167,7 +167,7 @@ describe("Test Access API BSC", async function () {
 
   it("getWithdrawByOrderId", async function () {
     const request: GetWithdrawByOrderIdRequest = {
-      merchant_order_id: "W1668568878446",
+      merchant_order_id: "W1668495148388",
       offset: 0,
       limit: 10,
     };
@@ -178,7 +178,7 @@ describe("Test Access API BSC", async function () {
 
   it("getWithdrawByBatchId", async function () {
     const request: GetWithdrawByBatchIdRequest = {
-      batch_id: "273",
+      batch_id: "260",
       offset: 0,
       limit: 10,
     };

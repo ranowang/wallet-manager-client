@@ -30,7 +30,7 @@ const merchant_id = new BigNumber(CONFIG.merchantId);
 
 const client = new WalletManagerClient(privateKey, clientConfig);
 
-describe("Test Access API XRP", async function () {
+describe("Test Access API OKC", async function () {
   it("Get Address", async function () {
     const request: GetAddressReqeust = {
       chain_type,
@@ -167,7 +167,7 @@ describe("Test Access API XRP", async function () {
 
   it("getWithdrawByOrderId", async function () {
     const request: GetWithdrawByOrderIdRequest = {
-      merchant_order_id: "W1668051419819",
+      merchant_order_id: "W1668495148388",
       offset: 0,
       limit: 10,
     };
@@ -178,7 +178,7 @@ describe("Test Access API XRP", async function () {
 
   it("getWithdrawByBatchId", async function () {
     const request: GetWithdrawByBatchIdRequest = {
-      batch_id: "221",
+      batch_id: "260",
       offset: 0,
       limit: 10,
     };

@@ -13,6 +13,7 @@ export class ChainId{
     static readonly BSC = 56;
     static readonly BSCtest = 97;
     static readonly Sepolia = 11155111;
+    static readonly OKXChainTestnet = 65;
 }
 
 export enum OperationBatchStatus{

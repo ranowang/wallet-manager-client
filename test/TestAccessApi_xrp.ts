@@ -30,7 +30,7 @@ const merchant_id = new BigNumber(CONFIG.merchantId);
 
 const client = new WalletManagerClient(privateKey, clientConfig);
 
-describe("Test Access API OKC", async function () {
+describe("Test Access API XRP", async function () {
   it("Get Address", async function () {
     const request: GetAddressReqeust = {
       chain_type,

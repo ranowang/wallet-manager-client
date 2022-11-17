@@ -23,14 +23,14 @@ const { privateKey } = CONFIG.identity;
 
 let orderSeq = new Date().getTime();
 
-const chain_type = ChainType.XRP;
-const chain_id = ChainId.RippleTestnet;
+const chain_type = ChainType.ETH;
+const chain_id = ChainId.OKXChainTestnet;
 const wallet_type = WalletType.HotWallet;
 const merchant_id = new BigNumber(CONFIG.merchantId);
 
 const client = new WalletManagerClient(privateKey, clientConfig);
 
-describe("Test Access API XRP", async function () {
+describe("Test Access API OKC", async function () {
   it("Get Address", async function () {
     const request: GetAddressReqeust = {
       chain_type,
@@ -53,9 +53,9 @@ describe("Test Access API XRP", async function () {
   it("Batch withdraw", async function () {
     const order:WithdrawOrder = {
       merchant_order_id: "W" + orderSeq++,
-      amount: new BigNumber("5000000"),
-      decimals: 6,
-      to_address: "rhEpyng9BtC4UGk96YaTvR3sPTtDmoH2jo"
+      amount: new BigNumber("10000000000000000000"),
+      decimals: 18,
+      to_address: "0x3bB86AF74140649Cb6F97e98D800aC581EA97E31"
   };
 
   const request:BatchWithdrawRequest = {
@@ -63,7 +63,7 @@ describe("Test Access API XRP", async function () {
       wallet_type,
       chain_type,
       chain_id,
-      asset_name: "XRP",
+      asset_name: "WMT",
       orders: [order],
       client_data: "rano_test004"
   };
@@ -87,10 +87,10 @@ describe("Test Access API XRP", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "XRP",
-      threshold: new BigNumber("31000000"),
-      decimals: 6,
-      gether_address: "rBrVY3ib8bXupPN6Ara9msa5T1xwbUic5B", // hot wallet address
+      asset_name: "WMT",
+      threshold: new BigNumber("1000000000"),
+      decimals: 18,
+      gether_address: "0x93B6b0f8ca6eC6B162d2fFDE776a5639A1d1b35a", // hot wallet address
       invoker_address: "",
       client_data: "ranotest",
       preview: true,
@@ -107,10 +107,10 @@ describe("Test Access API XRP", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "XRP",
-      threshold: new BigNumber("31000000"),
-      decimals: 6,
-      gether_address: "rBrVY3ib8bXupPN6Ara9msa5T1xwbUic5B", // hot wallet address
+      asset_name: "WMT",
+      threshold: new BigNumber("1000000000"),
+      decimals: 18,
+      gether_address: "0x93B6b0f8ca6eC6B162d2fFDE776a5639A1d1b35a", // hot wallet address
       invoker_address: "",
       client_data: "ranotest",
       preview: false,
@@ -125,8 +125,8 @@ describe("Test Access API XRP", async function () {
     const request: GetDepositByAddressRequest = {
       chain_type,
       chain_id,
-      address: "rBrVY3ib8bXupPN6Ara9msa5T1xwbUic5B",
-      asset_name: "XRP",
+      address: "0x93B6b0f8ca6eC6B162d2fFDE776a5639A1d1b35a",
+      asset_name: "OKT",
       offset: 0,
       limit: 10,
     };
@@ -141,7 +141,7 @@ describe("Test Access API XRP", async function () {
       chain_type,
       chain_id,
       tx_hash:
-        "A5DBD6978F430652BC08A3E03BFB43832A72905EECC97F17A96A153A43909641",
+        "0xde7873ab3665e67af68129d144a7d51522e4c5a68d402bc93dca57e0009501d1",
       offset: 0,
       limit: 10,
     };
@@ -155,7 +155,7 @@ describe("Test Access API XRP", async function () {
     const request: GetDepositByRefNoRequest = {
       chain_type,
       chain_id,
-      ref_no: "GN66ZEE7EAN3DMCX6N6SR6LXAZAKYYC3BVIC424PFVBUNEYU2CNA",
+      ref_no: "Q36TA2UFRY43JT5GC5HEGNTPOUNI3LFEUEGRW7FT23F6GBBO4QLA",
       offset: 0,
       limit: 10,
     };
@@ -167,22 +167,24 @@ describe("Test Access API XRP", async function () {
 
   it("getWithdrawByOrderId", async function () {
     const request: GetWithdrawByOrderIdRequest = {
-      merchant_order_id: "W1668495148388",
+      merchant_order_id: "W1668581350872",
       offset: 0,
       limit: 10,
     };
     const response = await client.getWithdrawByOrderId(request);
-
+    console.info(JSON.stringify(request));
+    
     console.info(JSON.stringify(response));
   });
 
   it("getWithdrawByBatchId", async function () {
     const request: GetWithdrawByBatchIdRequest = {
-      batch_id: "260",
+      batch_id: "286",
       offset: 0,
       limit: 10,
     };
     const response = await client.getWithdrawByBatchId(request);
+    console.info(JSON.stringify(request));
 
     console.info(JSON.stringify(response, null, 2));
   });

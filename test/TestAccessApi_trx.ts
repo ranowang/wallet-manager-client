@@ -87,7 +87,7 @@ describe("Test Access API TRX", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "TRX",
+      asset_name: "USDT",
       threshold: new BigNumber("1000000"),
       decimals: 6,
       gether_address: "TQEW3c8kwV2ev62w6fFnF6H37iSYFP42nD", // hot wallet address
@@ -107,7 +107,7 @@ describe("Test Access API TRX", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "TRX",
+      asset_name: "USDT",
       threshold: new BigNumber("1000000"),
       decimals: 6,
       gether_address: "TQEW3c8kwV2ev62w6fFnF6H37iSYFP42nD", // hot wallet address

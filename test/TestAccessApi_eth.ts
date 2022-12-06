@@ -107,10 +107,10 @@ describe("Test Access API ETH(Sepolia)", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "ETH",
+      asset_name: "USDC",
       threshold: new BigNumber("100000"),
-      decimals: 18,
-      gether_address: "0xEDCFD9fFE533be21D5fCABa6D3A7B799C200daD0", // hot wallet address
+      decimals: 6,
+      gether_address: "0x93B6b0f8ca6eC6B162d2fFDE776a5639A1d1b35a", // hot wallet address
       invoker_address: "",
       client_data: "ranotest",
       preview: false,

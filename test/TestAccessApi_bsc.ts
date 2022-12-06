@@ -87,7 +87,7 @@ describe("Test Access API BSC", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "USDC",
+      asset_name: "USDT",
       threshold: new BigNumber("10000000000000000"),
       decimals: 18,
       gether_address: "0x70A2247873a7Ead1103c0c0eBcEFB50f4F4E255a", // hot wallet address
@@ -107,8 +107,8 @@ describe("Test Access API BSC", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "USDC",
-      threshold: new BigNumber("10000000000000000"),
+      asset_name: "BNB",
+      threshold: new BigNumber("500000000000000000"),
       decimals: 18,
       gether_address: "0x70A2247873a7Ead1103c0c0eBcEFB50f4F4E255a", // hot wallet address
       invoker_address: "",

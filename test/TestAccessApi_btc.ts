@@ -93,9 +93,9 @@ describe("Test Access API BTC", async function () {
       asset_name: "BTC",
       threshold: new BigNumber("5000"),
       decimals: 8,
-      gether_address: "mycB37zMD7sr2Mcfh35Suv26wgfU7UrXLT", // hot wallet address
+      gether_address: "2N1WctuSCt6DrYYzHpr1NwK9zNk6Gc47vsC", // hot wallet address
       invoker_address: "",
-      client_data: "abc",
+      client_data: "ranotest",
       preview: true,
     };
 
@@ -113,9 +113,9 @@ describe("Test Access API BTC", async function () {
       asset_name: "BTC",
       threshold: new BigNumber("5000"),
       decimals: 8,
-      gether_address: "mycB37zMD7sr2Mcfh35Suv26wgfU7UrXLT", // hot wallet address
+      gether_address: "2N1WctuSCt6DrYYzHpr1NwK9zNk6Gc47vsC", // hot wallet address
       invoker_address: "",
-      client_data: "abc",
+      client_data: "ranotest",
       preview: false,
     };
 

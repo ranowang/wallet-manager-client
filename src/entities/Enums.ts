@@ -97,7 +97,12 @@ export enum TransactionType{
     
 }
 export enum WalletType{
+    ExternalWallet = 0,
     ClientWallet = 1,
     HotWallet = 2,
-    InvokerWallet = 3
+    InvokerWallet = 3,
+    SweepDestWallet = 4,
+    Adjustment = 8,
+    MinerFee = 9
+
 }

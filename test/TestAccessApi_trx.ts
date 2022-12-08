@@ -53,7 +53,7 @@ describe("Test Access API TRX", async function () {
   it("Batch withdraw", async function () {
     const order:WithdrawOrder = {
       merchant_order_id: "W" + orderSeq++,
-      amount: new BigNumber("1000000"),
+      amount: new BigNumber("11000000"),
       decimals: 6,
       to_address: "TKGh498cuqgSKeTTydLPjrDsZUQDgwQngG"
   };
@@ -63,7 +63,7 @@ describe("Test Access API TRX", async function () {
       wallet_type,
       chain_type,
       chain_id,
-      asset_name: "TRX",
+      asset_name: "USDC",
       orders: [order],
       client_data: "rano_test004"
   };

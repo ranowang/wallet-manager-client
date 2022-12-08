@@ -26,7 +26,7 @@ let orderSeq = new Date().getTime();
 const chain_type = ChainType.BTC;
 const chain_id = ChainId.Default;
 const merchant_id = new BigNumber(CONFIG.merchantId);
-const wallet_type = WalletType.ClientWallet;
+const wallet_type = WalletType.HotWallet;
 
 const client = new WalletManagerClient(privateKey, clientConfig);
 
@@ -66,9 +66,10 @@ describe("Test Access API BTC", async function () {
     };
 
     const request: BatchWithdrawRequest = {
+      merchant_id,
+      wallet_type,
       chain_type,
       chain_id,
-      merchant_id,
       asset_name: "BTC",
       orders: [order1, order2],
       client_data: "test",

@@ -55,7 +55,7 @@ describe("Test Access API BTC", async function () {
       merchant_order_id: "W" + orderSeq++,
       amount: new BigNumber("20"),
       decimals: 8,
-      to_address: "mkYzFPSTEvVcBPfRhCjW6HVuZLzREt1tF8",
+      to_address: "tb1q3s5a6mtfjfgxnhrzvxfdvy349gyjcnqc3x3vpg",
     };
 
     const order2: WithdrawOrder = {

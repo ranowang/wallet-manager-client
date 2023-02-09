@@ -53,7 +53,7 @@ describe("Test Access API BSC", async function () {
   it("Batch withdraw", async function () {
     const order:WithdrawOrder = {
       merchant_order_id: "W" + orderSeq++,
-      amount: new BigNumber("10000000000000000000"),
+      amount: new BigNumber("1123456789123456789"),
       decimals: 18,
       to_address: "0x5f1d06d369092da06D897971Fce3BF150F8735B3"
   };

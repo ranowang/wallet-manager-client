@@ -53,8 +53,8 @@ describe("Test Access API ETH(Sepolia)", async function () {
   it("Batch withdraw", async function () {
     const order:WithdrawOrder = {
       merchant_order_id: "W" + orderSeq++,
-      amount: new BigNumber("1000000"),
-      decimals: 6,
+      amount: new BigNumber("9464648354528867"),
+      decimals: 18,
       to_address: "0x3bB86AF74140649Cb6F97e98D800aC581EA97E31"
   };
 
@@ -63,7 +63,7 @@ describe("Test Access API ETH(Sepolia)", async function () {
       wallet_type,
       chain_type,
       chain_id,
-      asset_name: "USDC",
+      asset_name: "ETH",
       orders: [order],
       client_data: "rano_test004"
   };

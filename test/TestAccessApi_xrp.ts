@@ -53,7 +53,7 @@ describe("Test Access API XRP", async function () {
   it("Batch withdraw", async function () {
     const order:WithdrawOrder = {
       merchant_order_id: "W" + orderSeq++,
-      amount: new BigNumber("5000000"),
+      amount: new BigNumber("7100000"),
       decimals: 6,
       to_address: "rhEpyng9BtC4UGk96YaTvR3sPTtDmoH2jo"
   };

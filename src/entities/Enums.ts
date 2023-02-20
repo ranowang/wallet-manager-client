@@ -2,7 +2,12 @@ export enum ChainType{
     BTC = 1,
     ETH = 2,
     TRON = 3,
-    XRP = 4
+    XRP = 4,
+    SOL = 5,
+    BCH = 6,
+    LTC = 7,
+    ADA = 8
+    ,
 }
 
 export class ChainId{
@@ -15,6 +20,9 @@ export class ChainId{
     static readonly Sepolia = 11155111;
     static readonly OKXChainTestnet = 65;
     static readonly Mumbai = 80001;
+    static readonly BitcoinCashTestnet = 2;
+    static readonly LTCTestnet = 2;
+    static readonly CardanoADA = 2;
 }
 
 export enum OperationBatchStatus{

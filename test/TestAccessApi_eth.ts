@@ -53,8 +53,8 @@ describe("Test Access API ETH(Sepolia)", async function () {
   it("Batch withdraw", async function () {
     const order:WithdrawOrder = {
       merchant_order_id: "W" + orderSeq++,
-      amount: new BigNumber("9464648354528867"),
-      decimals: 18,
+      amount: new BigNumber("123456"),
+      decimals: 6,
       to_address: "0x3bB86AF74140649Cb6F97e98D800aC581EA97E31"
   };
 
@@ -63,7 +63,7 @@ describe("Test Access API ETH(Sepolia)", async function () {
       wallet_type,
       chain_type,
       chain_id,
-      asset_name: "ETH",
+      asset_name: "USDC",
       orders: [order],
       client_data: "rano_test004"
   };
@@ -87,10 +87,10 @@ describe("Test Access API ETH(Sepolia)", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "ETH",
+      asset_name: "USDT",
       threshold: new BigNumber("100000"),
-      decimals: 18,
-      gether_address: "0xEDCFD9fFE533be21D5fCABa6D3A7B799C200daD0", // hot wallet address
+      decimals: 6,
+      gether_address: "0x68B8bd4C7D567C398dbdD0f697bEd87e4Ae46225", // hot wallet address
       invoker_address: "",
       client_data: "ranotest",
       preview: true,
@@ -107,10 +107,10 @@ describe("Test Access API ETH(Sepolia)", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "USDC",
+      asset_name: "USDT",
       threshold: new BigNumber("100000"),
       decimals: 6,
-      gether_address: "0x93B6b0f8ca6eC6B162d2fFDE776a5639A1d1b35a", // hot wallet address
+      gether_address: "0x68B8bd4C7D567C398dbdD0f697bEd87e4Ae46225", // hot wallet address
       invoker_address: "",
       client_data: "ranotest",
       preview: false,

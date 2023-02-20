@@ -53,7 +53,7 @@ describe("Test Access API MUM", async function () {
   it("Batch withdraw", async function () {
     const order:WithdrawOrder = {
       merchant_order_id: "W" + orderSeq++,
-      amount: new BigNumber("2000000000000000000"),
+      amount: new BigNumber("200000000000000000"),
       decimals: 18,
       to_address: "0x8F9092CE573e41d72378Cf8c9d3335584e6843F1"
   };
@@ -63,7 +63,7 @@ describe("Test Access API MUM", async function () {
       wallet_type,
       chain_type,
       chain_id,
-      asset_name: "NSDX",
+      asset_name: "MATIC",
       orders: [order],
       client_data: "rano_test004"
   };

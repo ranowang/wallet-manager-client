@@ -23,14 +23,14 @@ const { privateKey } = CONFIG.identity;
 
 let orderSeq = new Date().getTime();
 
-const chain_type = ChainType.ETH;
-const chain_id = ChainId.OKXChainTestnet;
+const chain_type = ChainType.LTC;
+const chain_id = ChainId.LTCTestnet;
 const wallet_type = WalletType.HotWallet;
 const merchant_id = new BigNumber(CONFIG.merchantId);
 
 const client = new WalletManagerClient(privateKey, clientConfig);
 
-describe("Test Access API OKC", async function () {
+describe("Test Access API LTC", async function () {
   it("Get Address", async function () {
     const request: GetAddressReqeust = {
       chain_type,
@@ -38,7 +38,7 @@ describe("Test Access API OKC", async function () {
       merchant_id,
       client_id: new Date().getTime().toFixed(),
       wallet_type,
-      wallet_name:"1668159293078",
+      wallet_name:"Rano",
     };
 
     const response = await client.getAddress(request);
@@ -53,9 +53,9 @@ describe("Test Access API OKC", async function () {
   it("Batch withdraw", async function () {
     const order:WithdrawOrder = {
       merchant_order_id: "W" + orderSeq++,
-      amount: new BigNumber("200000000000000000"),
-      decimals: 18,
-      to_address: "0x3bB86AF74140649Cb6F97e98D800aC581EA97E31"
+      amount: new BigNumber("7100000"),
+      decimals: 8,
+      to_address: "QXjugNrRiJAxt5ZMQqhEpxC5uSbf4JYg5Y"
   };
 
   const request:BatchWithdrawRequest = {
@@ -63,7 +63,7 @@ describe("Test Access API OKC", async function () {
       wallet_type,
       chain_type,
       chain_id,
-      asset_name: "OKT",
+      asset_name: "LTC",
       orders: [order],
       client_data: "rano_test004"
   };
@@ -87,10 +87,10 @@ describe("Test Access API OKC", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "WMT",
-      threshold: new BigNumber("1000000000"),
-      decimals: 18,
-      gether_address: "0x93B6b0f8ca6eC6B162d2fFDE776a5639A1d1b35a", // hot wallet address
+      asset_name: "LTC",
+      threshold: new BigNumber("1"),
+      decimals: 8,
+      gether_address: "QLdQrrnrpcB7GTCwwRdE764o9RvtzLMw8x", // hot wallet address
       invoker_address: "",
       client_data: "ranotest",
       preview: true,
@@ -107,10 +107,10 @@ describe("Test Access API OKC", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "WMT",
-      threshold: new BigNumber("1000000000"),
-      decimals: 18,
-      gether_address: "0x93B6b0f8ca6eC6B162d2fFDE776a5639A1d1b35a", // hot wallet address
+      asset_name: "LTC",
+      threshold: new BigNumber("1"),
+      decimals: 8,
+      gether_address: "QLdQrrnrpcB7GTCwwRdE764o9RvtzLMw8x", // hot wallet address
       invoker_address: "",
       client_data: "ranotest",
       preview: false,
@@ -125,8 +125,8 @@ describe("Test Access API OKC", async function () {
     const request: GetDepositByAddressRequest = {
       chain_type,
       chain_id,
-      address: "0x93B6b0f8ca6eC6B162d2fFDE776a5639A1d1b35a",
-      asset_name: "OKT",
+      address: "Qc3dHexP3vytug3wNgGvFtzTpzAJ8jAked",
+      asset_name: "LTC",
       offset: 0,
       limit: 10,
     };
@@ -141,7 +141,7 @@ describe("Test Access API OKC", async function () {
       chain_type,
       chain_id,
       tx_hash:
-        "0xde7873ab3665e67af68129d144a7d51522e4c5a68d402bc93dca57e0009501d1",
+        "de2cb46789c2da9830cfb8c7d70ccf5640ddfa220e22099d562168d6f02317c8",
       offset: 0,
       limit: 10,
     };
@@ -155,7 +155,7 @@ describe("Test Access API OKC", async function () {
     const request: GetDepositByRefNoRequest = {
       chain_type,
       chain_id,
-      ref_no: "Q36TA2UFRY43JT5GC5HEGNTPOUNI3LFEUEGRW7FT23F6GBBO4QLA",
+      ref_no: "JKY7XO23ZOCB63GYP5CAYZB6OMLRYHNQ4KVDLM4OHIWKAKQZUJDQ",
       offset: 0,
       limit: 10,
     };
@@ -167,24 +167,22 @@ describe("Test Access API OKC", async function () {
 
   it("getWithdrawByOrderId", async function () {
     const request: GetWithdrawByOrderIdRequest = {
-      merchant_order_id: "W1668581350872",
+      merchant_order_id: "WD0000000000000185",
       offset: 0,
       limit: 10,
     };
     const response = await client.getWithdrawByOrderId(request);
-    console.info(JSON.stringify(request));
-    
+
     console.info(JSON.stringify(response));
   });
 
   it("getWithdrawByBatchId", async function () {
     const request: GetWithdrawByBatchIdRequest = {
-      batch_id: "286",
+      batch_id: "964",
       offset: 0,
       limit: 10,
     };
     const response = await client.getWithdrawByBatchId(request);
-    console.info(JSON.stringify(request));
 
     console.info(JSON.stringify(response, null, 2));
   });

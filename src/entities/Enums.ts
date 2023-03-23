@@ -23,6 +23,7 @@ export class ChainId{
     static readonly BitcoinCashTestnet = 2;
     static readonly LTCTestnet = 2;
     static readonly CardanoADA = 2;
+    static readonly FujiAvalanche = 43113;
 }
 
 export enum OperationBatchStatus{

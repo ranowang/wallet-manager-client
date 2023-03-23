@@ -63,7 +63,7 @@ describe("Test Access API ETH(Sepolia)", async function () {
       wallet_type,
       chain_type,
       chain_id,
-      asset_name: "USDC",
+      asset_name: "USDT",
       orders: [order],
       client_data: "rano_test004"
   };

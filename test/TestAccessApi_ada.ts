@@ -53,17 +53,16 @@ describe("Test Access API ADA", async function () {
   it("Batch withdraw", async function () {
     const order:WithdrawOrder = {
       merchant_order_id: "W" + orderSeq++,
-      amount: new BigNumber("7100000"),
+      amount: new BigNumber("5100000"),
       decimals: 6,
-      to_address: "rhEpyng9BtC4UGk96YaTvR3sPTtDmoH2jo"
+      to_address: "addr_test1qpx6e6ugu2h9240vcnljfgyhasgf3pya67eekcydclngd3wqq2zep0aqwh2yty3eh8zppwsg3umen8r5edhtk970x68qrqxp50"
   };
-
   const request:BatchWithdrawRequest = {
       merchant_id,
       wallet_type,
       chain_type,
       chain_id,
-      asset_name: "XRP",
+      asset_name: "ADA",
       orders: [order],
       client_data: "rano_test004"
   };
@@ -87,10 +86,10 @@ describe("Test Access API ADA", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "XRP",
-      threshold: new BigNumber("31000000"),
+      asset_name: "ADA",
+      threshold: new BigNumber("1000000"),
       decimals: 6,
-      gether_address: "rBrVY3ib8bXupPN6Ara9msa5T1xwbUic5B", // hot wallet address
+      gether_address: "addr_test1vpju4ywq3y0e954epj0u7p6aad4e4fvjwx68sslpw36gcfscjgsna", // hot wallet address
       invoker_address: "",
       client_data: "ranotest",
       preview: true,
@@ -107,10 +106,10 @@ describe("Test Access API ADA", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "XRP",
-      threshold: new BigNumber("31000000"),
+      asset_name: "ADA",
+      threshold: new BigNumber("11000000"),
       decimals: 6,
-      gether_address: "rBrVY3ib8bXupPN6Ara9msa5T1xwbUic5B", // hot wallet address
+      gether_address: "addr_test1vpju4ywq3y0e954epj0u7p6aad4e4fvjwx68sslpw36gcfscjgsna", // hot wallet address
       invoker_address: "",
       client_data: "ranotest",
       preview: false,
@@ -125,8 +124,8 @@ describe("Test Access API ADA", async function () {
     const request: GetDepositByAddressRequest = {
       chain_type,
       chain_id,
-      address: "rBrVY3ib8bXupPN6Ara9msa5T1xwbUic5B",
-      asset_name: "XRP",
+      address: "addr_test1vqj8vpysghk4fvnax03fzx32907903uegw0sdjw27dzak6cjejn4d",
+      asset_name: "ADA",
       offset: 0,
       limit: 10,
     };
@@ -141,7 +140,7 @@ describe("Test Access API ADA", async function () {
       chain_type,
       chain_id,
       tx_hash:
-        "A5DBD6978F430652BC08A3E03BFB43832A72905EECC97F17A96A153A43909641",
+        "dc70a5395bb3ede65f01b9b48c097006c3e0f37f02ca0dc30b0c5f38d202f94c",
       offset: 0,
       limit: 10,
     };
@@ -155,7 +154,7 @@ describe("Test Access API ADA", async function () {
     const request: GetDepositByRefNoRequest = {
       chain_type,
       chain_id,
-      ref_no: "GN66ZEE7EAN3DMCX6N6SR6LXAZAKYYC3BVIC424PFVBUNEYU2CNA",
+      ref_no: "3D5A3TFSQP6JGJQLV4KKUGL7AIS37NQSFABFFLRVV6YX23P64RIA",
       offset: 0,
       limit: 10,
     };
@@ -167,7 +166,7 @@ describe("Test Access API ADA", async function () {
 
   it("getWithdrawByOrderId", async function () {
     const request: GetWithdrawByOrderIdRequest = {
-      merchant_order_id: "W1668495148388",
+      merchant_order_id: "WD0000000000000213",
       offset: 0,
       limit: 10,
     };
@@ -178,7 +177,7 @@ describe("Test Access API ADA", async function () {
 
   it("getWithdrawByBatchId", async function () {
     const request: GetWithdrawByBatchIdRequest = {
-      batch_id: "260",
+      batch_id: "1045",
       offset: 0,
       limit: 10,
     };

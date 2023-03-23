@@ -23,14 +23,14 @@ const { privateKey } = CONFIG.identity;
 
 let orderSeq = new Date().getTime();
 
-const chain_type = ChainType.BTC;
-const chain_id = ChainId.Default;
-const merchant_id = new BigNumber(CONFIG.merchantId);
+const chain_type = ChainType.ETH;
+const chain_id = ChainId.FujiAvalanche;
 const wallet_type = WalletType.HotWallet;
+const merchant_id = new BigNumber(CONFIG.merchantId);
 
 const client = new WalletManagerClient(privateKey, clientConfig);
 
-describe("Test Access API BTC", async function () {
+describe("Test Access API Fuji C-chain(Avalanche)", async function () {
   it("Get Address", async function () {
     const request: GetAddressReqeust = {
       chain_type,
@@ -38,7 +38,7 @@ describe("Test Access API BTC", async function () {
       merchant_id,
       client_id: new Date().getTime().toFixed(),
       wallet_type,
-      wallet_name:"123"
+      wallet_name:"1668159293078",
     };
 
     const response = await client.getAddress(request);
@@ -51,39 +51,35 @@ describe("Test Access API BTC", async function () {
   });
 
   it("Batch withdraw", async function () {
-    const order1: WithdrawOrder = {
+    const order:WithdrawOrder = {
       merchant_order_id: "W" + orderSeq++,
-      amount: new BigNumber("200000"),
-      decimals: 8,
-      to_address: "2MufyjQiHLZovkofB3srcJBJSuAagi5MBeK",
-    };
+      amount: new BigNumber("123456"),
+      decimals: 6,
+      to_address: "0x3bB86AF74140649Cb6F97e98D800aC581EA97E31"
+  };
 
-    const order2: WithdrawOrder = {
-      merchant_order_id: "W" + orderSeq++,
-      amount: new BigNumber("20"),
-      decimals: 8,
-      to_address: "mua5is4apJDAXRZwFV6Z4Qudp3CyKLFrpr", // to a client wallet address
-    };
-
-    const request: BatchWithdrawRequest = {
+  const request:BatchWithdrawRequest = {
       merchant_id,
       wallet_type,
       chain_type,
       chain_id,
-      asset_name: "BTC",
-      orders: [order1, order2],
-      client_data: "test",
-    };
+      asset_name: "USDT",
+      orders: [order],
+      client_data: "rano_test004"
+  };
 
-    const response = await client.batchWithdraw(request);
-    //{"error":null,"result":{"batch_id":63,"request_time":1661528769}}
-    console.info(JSON.stringify(response));
+  
 
-    expect(response.result).to.be.not.undefined;
-    expect(response.result).to.be.not.null;
-    expect(response.result?.batch_id).to.be.not.undefined;
-    expect(response.result?.request_time).to.be.not.undefined;
-  });
+  const response = await client.batchWithdraw(request);
+  //{"error":null,"result":{"batch_id":63,"request_time":1661528769}}
+  console.info(JSON.stringify(response));
+  
+  expect(response.result).to.be.not.undefined;
+  expect(response.result).to.be.not.null;
+  expect(response.result?.batch_id).to.be.not.undefined;
+  expect(response.result?.request_time).to.be.not.undefined;
+
+});
 
   it("Preview batch sweep", async function () {
     const request: BatchSweepRequest = {
@@ -91,10 +87,10 @@ describe("Test Access API BTC", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "BTC",
-      threshold: new BigNumber("5000"),
-      decimals: 8,
-      gether_address: "2N1WctuSCt6DrYYzHpr1NwK9zNk6Gc47vsC", // hot wallet address
+      asset_name: "USDT",
+      threshold: new BigNumber("100000"),
+      decimals: 6,
+      gether_address: "0x68B8bd4C7D567C398dbdD0f697bEd87e4Ae46225", // hot wallet address
       invoker_address: "",
       client_data: "ranotest",
       preview: true,
@@ -111,10 +107,10 @@ describe("Test Access API BTC", async function () {
       merchant_order_id: "S" + orderSeq++,
       chain_type,
       chain_id,
-      asset_name: "BTC",
-      threshold: new BigNumber("5000"),
-      decimals: 8,
-      gether_address: "2N1WctuSCt6DrYYzHpr1NwK9zNk6Gc47vsC", // hot wallet address
+      asset_name: "USDT",
+      threshold: new BigNumber("100000"),
+      decimals: 6,
+      gether_address: "0x68B8bd4C7D567C398dbdD0f697bEd87e4Ae46225", // hot wallet address
       invoker_address: "",
       client_data: "ranotest",
       preview: false,
@@ -129,12 +125,13 @@ describe("Test Access API BTC", async function () {
     const request: GetDepositByAddressRequest = {
       chain_type,
       chain_id,
-      address: "mmgG9P7JBvb9TXHuGcyTgx41eyPGvbHRve",
-      asset_name: "BTC",
+      address: "0xEDCFD9fFE533be21D5fCABa6D3A7B799C200daD0",
+      asset_name: "ETH",
       offset: 0,
       limit: 10,
     };
     const response = await client.getDepositByAddress(request);
+    console.info(JSON.stringify(request));
 
     console.info(JSON.stringify(response));
   });
@@ -144,11 +141,12 @@ describe("Test Access API BTC", async function () {
       chain_type,
       chain_id,
       tx_hash:
-        "26b1776a4a13a89f0053d6e4d14d9425b8e95ebd369e4da9cb5a7ae8d0b8c633",
+        "0x75f9ef23d85a97a20c578415a8f4b5ff3160237a056e98f4dce8cdde005bfb80",
       offset: 0,
       limit: 10,
     };
     const response = await client.getDepositByHash(request);
+    console.info(JSON.stringify(request));
 
     console.info(JSON.stringify(response));
   });
@@ -157,19 +155,19 @@ describe("Test Access API BTC", async function () {
     const request: GetDepositByRefNoRequest = {
       chain_type,
       chain_id,
-      ref_no: "52BD5ZK4F5U6TR2AWA6ZAER6CYETS2DQGV3K77DAFCQIYQXN4XZQ",
+      ref_no: "R3ZTB6POJWXWYF4JW6SPZHSM45WT7XW5M4JPLUBSL2IG7URQGCMQ",
       offset: 0,
       limit: 10,
     };
-
     const response = await client.getDepositByRefNo(request);
+    console.info(JSON.stringify(request));
 
     console.info(JSON.stringify(response));
   });
 
   it("getWithdrawByOrderId", async function () {
     const request: GetWithdrawByOrderIdRequest = {
-      merchant_order_id: "EU11_WD_202211041739",
+      merchant_order_id: "W1668668386297",
       offset: 0,
       limit: 10,
     };
@@ -180,7 +178,7 @@ describe("Test Access API BTC", async function () {
 
   it("getWithdrawByBatchId", async function () {
     const request: GetWithdrawByBatchIdRequest = {
-      batch_id: "196",
+      batch_id: "302",
       offset: 0,
       limit: 10,
     };
@@ -196,7 +194,6 @@ describe("Test Access API BTC", async function () {
     };
 
     const response = await client.getAllLatestBlocks(request);
-    console.info(JSON.stringify(request));
     console.info(JSON.stringify(response));
 
     expect(response.result).to.be.not.undefined;
